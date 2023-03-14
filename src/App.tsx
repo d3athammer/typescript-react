@@ -1,33 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import * as React from 'react'
+import { ChakraButton } from './components/ChakraButton'
+import Button from './components/Button/Button'
+// 1. import `ChakraProvider` component
+import { ChakraProvider } from '@chakra-ui/react'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const handleClick = () => {
+    console.log("clicked");
+  }
+  // 2. Wrap ChakraProvider at the root of your app
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <ChakraProvider>
+      <div className="container m-5">
+      <ChakraButton />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+      <div className="container m-5">
+      <Button onClick={handleClick}>Click Me</Button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    </ChakraProvider>
   )
 }
 
